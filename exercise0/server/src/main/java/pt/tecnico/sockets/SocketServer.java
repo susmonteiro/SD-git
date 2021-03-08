@@ -41,15 +41,35 @@ public class SocketServer {
 			if (response == null) {
 				break;
 			}
-			System.out.printf("Received message with content: '%s'%n", response);
+			
+			DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
+			
 			try {
-				DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
+				File f = new File(response);
+				BufferedInputStream inF = new BufferedInputStream(new FileInputStream(f));
 
-				out.writeBytes("Received message\n");
+				long l = f.length();
+				out.writeBytes(Long.toString(l));
+				out.writeBytes("\n");
+				int size;
+				byte[] buffer = new byte[512];
+				while ((size = inF.read(buffer)) > 0) {
+					out.write(buffer, 0, size);
+				}
+				inF.close();
+
 			}
-			catch (IOException e) { System.out.printf("Reply message not sent.%s\n", e); }
-			catch (Exception e) { System.out.printf("Reply message not sent %s.\n", e); }
+			catch (FileNotFoundException e) {
+				out.writeBytes("NOK\n");
+				System.err.println(e);
+
+			}
+			
+	
+			//System.out.printf("Received message with content: '%s'%n", response);
+			
 		}
+
 
 		 
 

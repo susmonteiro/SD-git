@@ -5,6 +5,8 @@ The server opens a TCP socket and blocks waiting for connections.
 The port number is defined by an argument to the program.
 
 
+Envia o tamanho e o conteudo do ficheiro pedido pelo cliente, se esse ficheiro nao existir envia NOK fecha a ligacao com o cliente. Termina. 
+
 ## Instructions using Maven:
 
 

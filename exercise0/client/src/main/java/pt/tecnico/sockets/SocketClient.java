@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.net.Socket;
+import java.io.FileOutputStream;
+import java.io.File;
 
 public class SocketClient {
 
@@ -51,6 +53,22 @@ public class SocketClient {
 		String response = null;
 		response = in.readLine();
 		System.out.println(response);
+
+		// handle response
+
+		if (response.equals("NOK\n")){
+			System.out.println("No such file.");
+		} else {
+			int size = Integer.parseInt(response); 
+			File f = new File(text);
+			f.createNewFile();
+			FileOutputStream outF = new FileOutputStream(f);
+			char[] buf = new char[size];
+			in.read(buf, 0, size);
+			outF.write(new String(buf).getBytes());
+			outF.close();
+
+		}
 
 		// Close client socket
 		socket.close();

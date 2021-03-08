@@ -5,6 +5,8 @@ The client connects to the server, sends a line of text, and terminates.
 The host and port to connect to are defined as arguments.
 The text to send is also defined as argument to the program.
 
+O cliente recebe o ficheiro pedido ao servidor e guarda o seu conteúdo num ficheiro com o mesmo nome (criado no momento).
+
 
 ## Instructions using Maven:
 
