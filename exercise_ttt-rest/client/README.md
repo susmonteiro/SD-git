@@ -11,7 +11,7 @@ Make sure that you installed the contract module first.
 To compile and run the client:
 
 ```
-mvn compile exec:java
+mvn compile exec:java [-DpostPlay]
 ```
 
 

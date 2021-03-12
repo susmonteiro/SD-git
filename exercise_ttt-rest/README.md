@@ -20,7 +20,7 @@ See the README for each module. Start at contract, then go to server, and finall
 
 92437 [Catarina Gonçalves](catarina.g.goncalves@tecnico.ulisboa.pt)
 
-... [...](mailto:...@tecnico.ulisboa.pt)
+92456 [Duarte Bento](duarte.bento@tecnico.ulisboa.pt)
 
 92560 [Susana Monteiro](s.moreno.monteiro@tecnico.ulisboa.pt)
 
