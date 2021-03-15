@@ -4,6 +4,8 @@ This is a REST implementation of the Tic Tac Toe game.
 
 The server depends on the contract module, where the messages shared between server and client are defined.
 
+Method info uses GET protocol sending player number as an url argument.
+
 ## Instructions for using Maven
 
 To compile and run the server:

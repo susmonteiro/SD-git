@@ -85,7 +85,7 @@ public class TTTPlayer {
 
 					System.out.printf(
 							"\nPlayer %d, please enter the number of the square "
-									+ "where you want to place your %c (or 0 to refresh the board): ",
+									+ "where you want to place your %c (or 0 to refresh the board and 10 to get info about the other player): ",
 							player, (player == 1) ? 'X' : 'O');
 					go = scanner.nextInt();
 
@@ -93,6 +93,16 @@ public class TTTPlayer {
 
 					if (go == 0) {
 						play_res = PlayResult.UNKNOWN;
+						continue;
+					}
+
+					if (go == 10) {
+						play_res = PlayResult.UNKNOWN;
+
+						String infoPath = "info/" + String.valueOf(player);
+						debug("Calling GET info");
+						int info = client.target(restURL).path(infoPath).request().get(Integer.class);
+						System.out.println("\nNumber of opponent's plays: " + info + "\n");
 						continue;
 					}
 

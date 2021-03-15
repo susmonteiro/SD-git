@@ -70,7 +70,15 @@ public class TTTResources {
 	@Path("play/{arg1}/{arg2}/{arg3}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public PlayResult metodo(@PathParam("arg1") int arg1,
-					@PathParam("arg2") int arg2, @PathParam("arg2") int arg3) {
+					@PathParam("arg2") int arg2, @PathParam("arg3") int arg3) {
 		return game.play(arg1, arg2, arg3);
+	}
+
+
+	@GET
+	@Path("info/{arg1}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public int info(@PathParam("arg1") int player) {
+		return game.info(player);
 	}
 }

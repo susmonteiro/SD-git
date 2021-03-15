@@ -16,16 +16,11 @@ See the README for each module. Start at contract, then go to server, and finall
 
 **Group A24**
 
-*(fill-in line above with group identifier e.g. A07 or T22; and then delete this line)*
-
 92437 [Catarina Gonçalves](catarina.g.goncalves@tecnico.ulisboa.pt)
 
 92456 [Duarte Bento](duarte.bento@tecnico.ulisboa.pt)
 
 92560 [Susana Monteiro](s.moreno.monteiro@tecnico.ulisboa.pt)
-
-*(fill-in lines above with student number, name, and email; and then delete this line)*
-
 
 ----
 

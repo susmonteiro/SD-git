@@ -4,6 +4,9 @@ This is a client for the REST implementation of the Tic Tac Toe game.
 
 The client depends on the contract module, where the messages shared between server and client are defined. 
 
+Numbers 1-9 are used to choose where to play.
+Number 0 is used to reset the board and number 10 is used to get the number of the opponent's plays.
+
 ## Instructions for using Maven
 
 Make sure that you installed the contract module first.
