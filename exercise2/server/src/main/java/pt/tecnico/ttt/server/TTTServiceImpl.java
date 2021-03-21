@@ -23,13 +23,23 @@ public class TTTServiceImpl extends TTTGrpc.TTTImplBase {
 
 	@Override
 	public void play(PlayRequest request, StreamObserver<PlayResponse> responseObserver) {
-		PlayResponse response = PlayResponse.newBuilder().setPlayResultValue(
-			ttt.play(request.getRow(), request.getColumn(), request.getPlayer())).build();
+		PlayResult play_result = ttt.play(request.getRow(), request.getColumn(), request.getPlayer());
+		PlayResponse response = PlayResponse.newBuilder().setPlayResult(play_result).build();
 
 		// Send a single response through the stream.
 		responseObserver.onNext(response);
 		// Notify the client that the operation has been completed.
 		responseObserver.onCompleted();
 		
+	}
+
+	@Override
+	public void checkWinner(CheckWinnerRequest request, StreamObserver<CheckWinnerResponse> responseObserver) {
+		CheckWinnerResponse response = CheckWinnerResponse.newBuilder().setResult(ttt.checkWinner()).build();
+
+		// Send a single response through the stream.
+		responseObserver.onNext(response);
+		// Notify the client that the operation has been completed.
+		responseObserver.onCompleted();
 	}
 }
