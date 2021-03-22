@@ -15,7 +15,7 @@ Start at contract, then go to server, and finally go to the client.
 
 ## Authors
 
-**Group T24**
+**Group A24**
 
 
 92437 [Catarina Gonçalves](catarina.g.goncalves@tecnico.ulisboa.pt)
