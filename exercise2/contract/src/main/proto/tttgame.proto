@@ -28,6 +28,8 @@ enum PlayResult {
 	WRONG_TURN = 3;
 	GAME_FINISHED = 4;
 	SUCCESS = 5;
+	SUPER_FAIL = 6;
+	OUT_OF_SUPER = 7;
 };
 
 message PlayRequest {
@@ -59,4 +61,5 @@ service TTT {
 	rpc CurrentBoard(CurrentBoardRequest) returns (CurrentBoardResponse);
 	rpc Play(PlayRequest) returns (PlayResponse);
 	rpc CheckWinner(CheckWinnerRequest) returns (CheckWinnerResponse);
+	rpc SuperPlay(PlayRequest) returns (PlayResponse);
 }

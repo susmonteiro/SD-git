@@ -92,21 +92,37 @@ public class TTTClient {
 						play_res = PlayResult.UNKNOWN;
 						continue;
 					}
+					else if (go < 10) {
+						/* Get row index of board. */
+						row = --go / 3;
+						/* Get column index of board. */
+						column = go % 3;
+						debug("row = " + row + ", column = " + column);
 
-					/* Get row index of board. */
-					row = --go / 3;
-					/* Get column index of board. */
-					column = go % 3;
-					debug("row = " + row + ", column = " + column);
+					} 
+					else {
+						int foo = go/10;
+						/* Get row index of board. */
+						row = --foo / 3;
+						/* Get column index of board. */
+						column = foo % 3;
+						debug("row = " + row + ", column = " + column);
+					}
 
-					
+
+					// build request
 					PlayRequest playRequest = PlayRequest.newBuilder()
 						.setRow(row)
 						.setColumn(column)
 						.setPlayer(player).build();
 
-					// play_res = PlayResult.UNKNOWN;
-					play_res = stub.play(playRequest).getPlayResult();
+					// play_res = PlayResult.UNKNOWN; 
+					if (go < 10)
+						play_res = stub.play(playRequest).getPlayResult();
+					else
+						play_res = stub.superPlay(playRequest).getPlayResult();
+					
+					
 					if (play_res != PlayResult.SUCCESS) {
 						displayResult(play_res);
 					}
@@ -151,6 +167,12 @@ public class TTTClient {
 			break;
 		case GAME_FINISHED:
 			System.out.print("Game has finished.");
+			break;
+		case SUPER_FAIL:
+			System.out.print("Cannot use super play on that square.");
+			break;
+		case OUT_OF_SUPER:
+			System.out.print("No more super plays left.");
 			break;
 		default:
 			System.out.println("Unexpected result: " + play_res.toString());
