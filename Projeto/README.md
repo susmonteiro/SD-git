@@ -57,7 +57,6 @@ Carregamentos de *bicloins*:
 - utilizador recebe um prémio sempre que devolve a bicicleta, sempre positivos
 
 ---
----
 
 ## 2 Arquitetura do sistema
 - [App](#2.4-app)
@@ -153,7 +152,7 @@ Comandos:
 
 ---
 ## 3. Tecnologia
-#
+
 ###  Validações
 > Argumentos devem ser obrigatoriamente validados pelos servidores
 ### Faltas
