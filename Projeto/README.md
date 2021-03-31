@@ -1,9 +1,7 @@
 # Bicloin
 **Objetivo:** desenvolver o sistema *Bicloin* (*bicla* + *coin*) para gestão de uma plataforma de partilha de bicicletas.
 
----
-
-## [Parte 1](https://github.com/tecnico-distsys/Bicloin/blob/main/part1.md)
+# [Parte 1](https://github.com/tecnico-distsys/Bicloin/blob/main/part1.md)
 - [Utilizadores](#1.1-utilizadores)
 - [Estações](#1.2-Estações)
 - [Aluguer de Bicicletas](#1.3-aluguer-de-bicicletas)
@@ -61,7 +59,7 @@ Carregamentos de *bicloins*:
 ---
 ---
 
-### 2 Arquitetura do sistema
+## 2 Arquitetura do sistema
 - [App](#2.4-app)
 - [Hub](#2.1-servidor-hub): oferece procedimentos remotos. Contém apenas informação imutável.
 - [Rec](#2.2-servidor-rec) (*record*): oferece procedimentos remotos básicos de r/w de registos. Cada registo tem um ID único (textual, sem espaços) e um valor
