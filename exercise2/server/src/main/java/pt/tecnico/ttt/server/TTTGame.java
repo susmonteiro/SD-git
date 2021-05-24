@@ -6,9 +6,25 @@ public class TTTGame {
 	private char board[][];
 	private int numPlays = 0;
 	private int nextPlayer = 0;
+	private boolean superP0 = true;
+	private boolean superP1 = true;
 	
 	public TTTGame() {
 		this.resetBoard();
+	}
+
+	public boolean getSuperP(int player) {
+		if (player == 0)
+			return superP0;
+		else
+			return superP1;
+	}
+
+	public void setSuperP(int player) {
+		if (player == 0)
+			superP0 = false;
+		else
+			superP1 = false;
 	}
 	
 	@Override
@@ -42,6 +58,35 @@ public class TTTGame {
 			board[row][column] = (player == 1) ? 'X' : 'O';  /* Insert player symbol */
 			nextPlayer = (nextPlayer + 1) % 2;
 			numPlays++;
+			return PlayResult.SUCCESS;
+		}
+	}
+	
+	public PlayResult superPlay(int row, int column, int player) {
+		if (!(row >=0 && row <3 && column >= 0 && column < 3)) {
+			/* Outside board */
+			return PlayResult.OUT_OF_BOUNDS;
+		}
+		
+		char currentSymbol = (player == 1) ? 'X' : 'O';
+		
+		synchronized (this) {
+			if (!(this.getSuperP(player))) {
+				/* No super play left */
+				return PlayResult.OUT_OF_SUPER;
+			}
+			if (board[row][column] <= '9' || board[row][column] == currentSymbol) {
+				/* Square has been taken */
+				return PlayResult.SUPER_FAIL;
+			}
+			if (player != nextPlayer)  {
+				/* Not players turn */
+				return PlayResult.WRONG_TURN;
+			}
+	
+			board[row][column] = currentSymbol;  /* Insert player symbol */
+			nextPlayer = (nextPlayer + 1) % 2;
+			setSuperP(player);
 			return PlayResult.SUCCESS;
 		}
 	}
@@ -96,11 +141,18 @@ public class TTTGame {
 	}
 	
 	public void resetBoard() {
-		board = new char[][] {
-			{'1', '2', '3'},
-			{'4', '5', '6'},
-			{'7', '8', '9'}
-		};
+		synchronized (this) {
+			board = new char[][] {
+				{'1', '2', '3'},
+				{'4', '5', '6'},
+				{'7', '8', '9'}
+			};
+			numPlays = 0;
+			nextPlayer = 0;
+			superP0 = true;
+			superP1 = true;
+		}
+
 	}
 	
 }
