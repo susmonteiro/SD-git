@@ -104,6 +104,9 @@ public class SupplierServiceImpl extends SupplierGrpc.SupplierImplBase {
 			e.printStackTrace();
 		}
 
+		// alterar cenas
+		ProductsResponse changedResponse = productsResponse.toBuilder().setSupplierIdentifier(supplier.getId()+1).build();
+
 		signedResponse.setResponse(changedResponse);
 		SignedResponse response = signedResponse.build();
 
